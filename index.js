@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const wait = require('./wait');
+var json = require('./search-data.json'); //(with path)
 
 
 // most @actions toolkit packages have async methods
@@ -8,6 +9,8 @@ async function run() {
     const ms = core.getInput('milliseconds');
     core.info(`Waiting ${ms} milliseconds ...`);
 
+    console.log (json)
+    
     core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
     await wait(parseInt(ms));
     core.info((new Date()).toTimeString());
